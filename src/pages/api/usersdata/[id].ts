@@ -2,7 +2,7 @@
 import connectDB from "@/utils/connectDB";
 import User from "@/models/User";
 
-export default async function handler(req, res) {
+export default async function handler(req: any, res: any) {
   const { id } = req.query;
 
   try {
