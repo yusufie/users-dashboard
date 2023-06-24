@@ -27,7 +27,7 @@ function Register() {
     password: yup.string().min(4).max(20).required(),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref("password"), null], "Passwords Don't Match")
+      .oneOf([yup.ref("password"), undefined], "Passwords Don't Match")
       .required(),
   });
 
@@ -41,7 +41,7 @@ function Register() {
   const navigate = useRouter();
 
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     try {
       const response = await fetch('/api/register', {
         method: 'POST',
