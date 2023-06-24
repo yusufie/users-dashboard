@@ -10,11 +10,10 @@ import { SlEqualizer } from "react-icons/sl";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 
 function Users() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<{ fullName: any }[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null);
-
+  const [selectedUser, setSelectedUser] = useState<any>(null);
 
   const router = useRouter();
 
@@ -34,12 +33,12 @@ function Users() {
     fetchUsers();
   }, [searchQuery]); // Include searchQuery as a dependency
 
-  const highlightText = (text, query) => {
+  const highlightText = (text: any, query: any) => {
     const regex = new RegExp(`(${query})`, "gi");
     return text.replace(regex, "<span class='highlight'>$1</span>");
   };
 
-  const handleDeleteUser = (user) => {
+  const handleDeleteUser = (user: any) => {
     setSelectedUser(user);
     setShowModal(true);
   };
@@ -60,7 +59,7 @@ function Users() {
     setSelectedUser(null);
   };
   
-  const deleteUser = async (userId) => {
+  const deleteUser = async (userId: any) => {
     try {
       const response = await fetch(`/api/usersdata/${userId}`, {
         method: "DELETE",
@@ -82,7 +81,7 @@ function Users() {
     }
   };
 
-  const navigateToUserDetails = (userId) => {
+  const navigateToUserDetails = (userId: any) => {
     router.push(`/users/${userId}`);
   };
 
