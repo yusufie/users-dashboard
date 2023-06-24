@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { HiArrowLongLeft } from "react-icons/hi2";
 
 function UserDetail() {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
   const id = pathname.split("/").pop();
   const [user, setUser] = useState(null);
 
@@ -31,13 +31,14 @@ function UserDetail() {
     return <div>Loading...</div>;
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
+  
     const newValue =
       type === "checkbox" ? (checked ? "active" : "inactive") : value;
-
+  
     setUser((prevState) => ({
-      ...prevState,
+      ...prevState as any,
       [name]: newValue,
     }));
   };
