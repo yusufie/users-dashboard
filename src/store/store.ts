@@ -1,11 +1,21 @@
 import { create } from "zustand";
 
-const useStore = create((set) => ({
+type User = {
+  fullName: string;
+  email: string;
+};
+
+type StoreState = {
+  user: User;
+  setUser: (user: User) => void;
+};
+
+const useStore = create<StoreState>((set) => ({
   user: {
     fullName: "",
     email: "",
   },
-  setUser: (user) => set(() => ({ user })),
+  setUser: (user: User) => set(() => ({ user })),
 }));
 
 export default useStore;

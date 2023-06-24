@@ -12,7 +12,10 @@ import * as yup from "yup";
 
 import { useRouter } from "next/navigation";
 
-
+type LoginFormInputs = {
+  email: string;
+  password: string;
+};
 
 function Login() {
 
@@ -21,16 +24,12 @@ function Login() {
     password: yup.string().min(4).max(20).required(),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>({ resolver: yupResolver(schema) });
 
   const setUser = useStore((state) => state.setUser);
   const navigate = useRouter();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     try {
       const response = await fetch("/api/login", {
         method: "POST",
