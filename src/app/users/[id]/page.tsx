@@ -9,7 +9,13 @@ import { HiArrowLongLeft } from "react-icons/hi2";
 function UserDetail() {
   const pathname = usePathname() ?? "";
   const id = pathname.split("/").pop();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    role: "",
+    status: "",
+  });
 
   const [confirmUpdate, setConfirmUpdate] = useState(false);
 
