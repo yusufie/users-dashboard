@@ -1,24 +1,25 @@
 import NextAuth from 'next-auth';
-import  Credentials from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
 import { MongoClient } from 'mongodb';
 
-const MONGODB_URI  = process.env.MONGODB_URI as any;
+const MONGODB_URI = process.env.MONGODB_URI as any;
 
 const options = {
   providers: [
-    Credentials({
+    CredentialsProvider({
       name: 'Credentials',
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
-      authorize: async (credentials: any) => {
+      authorize: async (credentials): Promise<any> => {
         try {
+          if (!credentials) {
+            throw new Error('Invalid credentials');
+          }
+
           // Connect to the MongoDB database
-          const client = new MongoClient(MONGODB_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-          });
+          const client = new MongoClient(MONGODB_URI);
           await client.connect();
 
           // Access the "usersdata" collection
@@ -49,4 +50,6 @@ const options = {
   database: `${MONGODB_URI}usersdata`,
 };
 
-export default (req, res) => NextAuth(req, res, options);
+const authHandler = (req: any, res: any) => NextAuth(req, res, options);
+
+export default authHandler;
