@@ -1,10 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import "../globals.css";
 import Left from "../../components/Left";
 
 import { useRouter } from "next/navigation";
+
+import { FiTrash } from "react-icons/fi";
+import { SlEqualizer } from "react-icons/sl";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -126,13 +129,7 @@ function Users() {
               id="usersFilterButton"
               className="inline items-center justify-center"
             >
-              <Image
-                src="/icons/filter-icon.png"
-                alt="trash"
-                width={24}
-                height={24}
-                className="inline-block mr-2"
-              />
+              <SlEqualizer className="inline-block mr-2" />
               <p className="inline-block text-gray-600 font-bold">Filter</p>
             </button>
           </div>
@@ -168,21 +165,7 @@ function Users() {
                   <td>{user.phone}</td>
                   <td>{user.role}</td>
                   <td id="activeCircle">
-                    {user.status === "active" ? (
-                      <Image
-                        src="/icons/circle-green-icon.png"
-                        alt="circle-green"
-                        width={16}
-                        height={16}
-                      />
-                    ) : (
-                      <Image
-                        src="/icons/circle-red-icon.png"
-                        alt="circle-red"
-                        width={16}
-                        height={16}
-                      />
-                    )}
+                    {user.status === "active" ? ( <div className="circle-green"></div> ) : ( <div className="circle-red"></div> )}
                   </td>
                   <span className="moreDetails">Click to see more details </span>
                 </tr>
@@ -205,12 +188,7 @@ function Users() {
                       onClick={() => handleDeleteUser(user)}
                       style={{ zIndex: 99 }}
                     >
-                      <Image
-                        src="/icons/trash-icon.svg"
-                        alt="trash"
-                        width={20}
-                        height={20}
-                      />
+                      <FiTrash style={{height:"1.3em", width:"1.3em", color:"red"}}/>
                     </button>
                   </td>
                 </tr>
@@ -248,12 +226,7 @@ function Users() {
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            <Image
-              src="/icons/left-arrow-icon.svg"
-              alt="left-arrow"
-              width={16}
-              height={16}
-            />
+            <RiArrowLeftSLine style={{height:"1.3em", width:"1.3em"}} />
           </button>
 
           {currentPage > 1 && (
@@ -290,12 +263,7 @@ function Users() {
             onClick={() => paginate(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
-            <Image
-              src="/icons/right-arrow-icon.svg"
-              alt="right-arrow"
-              width={16}
-              height={16}
-            />
+            <RiArrowRightSLine style={{height:"1.3em", width:"1.3em"}} />
           </button>
         </div>
       </div>

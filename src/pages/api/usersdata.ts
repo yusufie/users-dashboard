@@ -7,10 +7,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   await connectDB(); // Connect to the MongoDB database
 
   if (req.method === 'GET') {
-    // Fetch all users
+    // Fetch all users and filter by fullName
     try {
-      const users = await User.find({});
+
+      const searchQuery = req.query.fullName || ""; // Get the fullName query parameter or use an empty string if not provided
+
+      const users = await User.find({
+        fullName: { $regex: searchQuery, $options: 'i' } // case-insensitive search
+      });
+
       res.status(200).json(users);
+      
     } catch (error) {
       console.error('Error fetching users:', error);
       res.status(500).json({ error: 'Server error' });

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Left from "../../../components/Left";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import { HiArrowLongLeft } from "react-icons/hi2";
 
 function UserDetail() {
   const pathname = usePathname();
@@ -89,13 +89,7 @@ function UserDetail() {
 
         <div className="inline-block">
           <Link href="/users" className="inline text-lg font-medium text-gray-400">
-            <Image
-              src="/icons/long-left-arrow-icon.png"
-              alt="trash"
-              width={24}
-              height={24}
-              className="inline-block mr-2"
-            />
+            <HiArrowLongLeft style={{height:"2em", width:"2em"}} className="inline-block mr-2" />
             Back to Users
           </Link>
         </div>

@@ -2,10 +2,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-
 import useStore from ".././store/store";
 
+import {FiSettings} from "react-icons/fi";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { HiOutlineUsers } from "react-icons/hi";
+import { PiNotepad, PiStackBold } from "react-icons/pi";
+import { BiHomeAlt2 } from "react-icons/bi";
+import { TbLogout } from "react-icons/tb";
 
 function Left() {
 
@@ -34,52 +38,28 @@ function Left() {
       <ul className="flex flex-col justify-start items-start w-full mt-2">
         <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
           <Link href="/" >
-            <Image
-              src="/icons/home-icon.png"
-              alt="logo"
-              width={20}
-              height={20}
-              className=" inline-block mr-2"
-            />
+            <BiHomeAlt2 style={{height:"1.3em", width: "1.3em"}} className=" inline-block mr-2" />
             Home
           </Link>
         </li>
 
         <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
           <Link href="/projects">
-            <Image
-              src="/icons/projects-icon.png"
-              alt="logo"
-              width={20}
-              height={20}
-              className=" inline-block mr-2"
-            />
+            <PiStackBold style={{height:"1.3em", width: "1.3em"}} className=" inline-block mr-2" />
             Projects
           </Link>
         </li>
 
         <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
           <Link href="/tasks">
-            <Image
-              src="/icons/tasks-icon.png"
-              alt="logo"
-              width={20}
-              height={20}
-              className=" inline-block mr-2"
-            />
+            <PiNotepad style={{height:"1.3em", width: "1.3em"}} className=" inline-block mr-2" />
             Tasks
           </Link>
         </li>
 
         <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
           <Link href="/users">
-            <Image
-              src="/icons/users-icon.png"
-              alt="logo"
-              width={20}
-              height={20}
-              className=" inline-block mr-2"
-            />
+            <HiOutlineUsers style={{height:"1.3em", width: "1.3em"}} className=" inline-block mr-2" />
             Users
           </Link>
         </li>
@@ -89,26 +69,14 @@ function Left() {
         <ul className="flex flex-col justify-start items-start w-full mt-auto">
           <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
             <Link href="/support">
-              <Image
-                src="/icons/support-icon.png"
-                alt="logo"
-                width={20}
-                height={20}
-                className=" inline-block mr-2"
-              />
+              <AiOutlineQuestionCircle style={{height:"1.3em", width: "1.3em"}} className=" inline-block mr-2" />
               Support
             </Link>
           </li>
 
           <li className="inline text-gray-600 font-bold w-full p-2 my-2 rounded-md hover:bg-gray-100">
             <Link href="/settings">
-              <Image
-                src="/icons/settings-icon.png"
-                alt="logo"
-                width={20}
-                height={20}
-                className=" inline-block mr-2"
-              />
+              <FiSettings style={{height: "1.3em", width: "1.3em"}} className="inline-block mr-2" />
               Settings
             </Link>
           </li>
@@ -122,13 +90,7 @@ function Left() {
 
           <div className="flex items-center justify-center">
             <Link href="/login">
-              <Image
-                src="/icons/logout-icon.png"
-                alt="logo"
-                width={20}
-                height={20}
-                className="inline-block ms-24 mr-4"
-              />
+              <TbLogout style={{height: "1.5em", width: "1.5em", color: "red" }} className="inline-block ms-24 mr-4" />
             </Link>
           </div>
         </div>
