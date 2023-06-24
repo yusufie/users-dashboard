@@ -1,18 +1,18 @@
 import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import  Credentials from 'next-auth';
 import { MongoClient } from 'mongodb';
 
 const MONGODB_URI  = process.env.MONGODB_URI as any;
 
 const options = {
   providers: [
-    Providers.Credentials({
+    Credentials({
       name: 'Credentials',
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
-      authorize: async (credentials) => {
+      authorize: async (credentials: any) => {
         try {
           // Connect to the MongoDB database
           const client = new MongoClient(MONGODB_URI, {
