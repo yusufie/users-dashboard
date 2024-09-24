@@ -2,7 +2,7 @@
 
 This is a web application that provides a user interface for register, logging in, viewing users from a database, searching,  deleting and updating user information. The application is built using Next.js, Node.js, MongoDB, TypeScript, Tailwind CSS, React, React Hook Form, Yup, NextAuth.js, Zustand, and Mongoose. It uses NextAuth.js for user authentication and authorization, Zustand for state management, and Tailwind CSS for styling.
 
-The application is deployed on Vercel and can be accessed at [https://users-dashboard-next.vercel.app/](https://users-dashboard-next.vercel.app/).
+The application is deployed on Vercel and can be accessed at [https://users-dashboard-next.netlify.app/login](https://users-dashboard-next.netlify.app/login).
 
 ![Overview](/public/images/users.png)
 
